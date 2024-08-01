@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Rester</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+</head>
+<body>
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-md-4 mx-auto shadow p-3 bg-info-subtle text-info-emphasis rounded mt-5">
+                <h2>User Registration</h2>
+                {% if error %}
+                <div class="alert alert-danger">{{error}}</div>
+                {% endif %}
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label class="form-label"><strong>UserName</strong></label>
+                        <input name="uname" class="form-control" type="text" placeholder="UserName">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Password</strong></label>
+                        <input name="upass" class="form-control" type="password" placeholder="Password">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Confirm Password</strong></label>
+                        <input name="ucpass" class="form-control" type="password" placeholder="Confirm Password">
+                    </div>
+                    <div class="mb-3">
+                        <input type="submit"values="Register" class="btn btn-danger">
+                        Alredy have an account? <a href="">Login</a>
+                    </div>
+                    {% if success %}
+                    <div class="alert alert-success">{{success}}</div>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
